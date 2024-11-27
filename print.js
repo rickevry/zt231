@@ -11,6 +11,7 @@ async function print(command) {
             body: command
         });
         const data = await response.text();
+        console.log("Printer response:", data);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -25,14 +26,21 @@ const fieldOrigin = (x,y) => (`^FO${x},${y}`);
 const printText = (s) => (`^FD${s}`) 
 const end = "^XZ";
 
+const zplCommands = 
+    fieldOrigin(50, 340) + "^CFA20,20" + printText("123456789") +
+    fieldOrigin(50, 420) + "^CFA20,20" + printText("123456789") +
+    fieldOrigin(350, 420) + "^CFA20,20" + printText("123456789") +
+    fieldOrigin(50, 505) + "^CFA20,20" + printText("123456789") +
+    fieldOrigin(50, 590) + "^CFA20,20" + printText("123456789") +
+    fieldOrigin(350, 590) + "^CFA20,20" + printText("123456789");
+
 let zpl = 
     start + 
     type + 
     printRate + 
     darkness +
     changeFont + 
-    fieldOrigin(20,20) +
-    printText("hej") + 
+    zplCommands +
     end;
 
 print(zpl).then(() => {

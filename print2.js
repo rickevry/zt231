@@ -23,6 +23,7 @@ const darkness = "^MD15";
 const changeFont = "^CF00,40";
 const fieldOrigin = (x,y) => (`^FO${x},${y}`);
 const printText = (x,y,s) => (`^FO${x},${y}^FD${s}^FS`) 
+const printQRCode = (x, y, url) => (`^FO${x},${y}^BQ,2,10^FD${url}^FS`);
 const end = "^XZ";
 
 let zpl = 
@@ -32,26 +33,18 @@ let zpl =
     darkness +
     changeFont + 
 
-    printText(20,20,"20") + 
-    printText(20,60,"60") + 
-    printText(20,100,"100") + 
-    printText(20,140,"140") + 
-    printText(20,180,"180") + 
-    printText(20,220,"220") + 
-    printText(20,260,"260") + 
-    printText(20,300,"300") + 
+    printText(53,312,"300") + 
 
-    printText(20,340,"340") +
-    printText(20,380,"380") +
-    printText(20,420,"420") +
-    printText(20,460,"460") +
-    printText(20,500,"500") +
-    printText(20,540,"540") +
+    printText(250,400,"380") +
+    printText(53,400,"420") +
+    printText(53,485,"500") +
+    printText(244,570,"540") +
 
-    printText(20,580,"580") +
-    printText(20,620,"620") +
-    printText(20,660,"660") +
-    printText(20,700,"700") +
+    printText(53,570,"580") +
+    printText(53,710,"700") +
+    printText(570,710,"2025/1") +
+
+    printQRCode(631, 125, "www.qvalify.se") +
 
     end;
 
