@@ -3,7 +3,7 @@ let fetch = require("node-fetch");
 async function print(command) {
 
     try {
-        const response = await fetch('http://192.168.68.73/pstprnt', {
+        const response = await fetch('http://10.10.1.229/pstprnt', {
             method: 'POST',
             headers: {
                 'Content-Length': command.length.toString()
@@ -23,7 +23,7 @@ const darkness = "^MD15";
 const changeFont = "^CF00,40";
 const fieldOrigin = (x,y) => (`^FO${x},${y}`);
 const printText = (x,y,s) => (`^FO${x},${y}^FD${s}^FS`) 
-const printQRCode = (x, y, url) => (`^FO${x},${y}^BQ,2,10^FD${url}^FS`);
+const printQRCode = (x, y, url) => (`^FO${x},${y}^BQ,2,7^FD${url}^FS`);
 const end = "^XZ";
 
 let zpl = 
@@ -33,18 +33,22 @@ let zpl =
     darkness +
     changeFont + 
 
-    printText(53,312,"300") + 
+    printText(70,320,"320") + 
 
-    printText(250,400,"380") +
-    printText(53,400,"420") +
-    printText(53,485,"500") +
-    printText(244,570,"540") +
+    printText(260,406,"406") +
+    printText(70,406,"406") +
+    printText(70,488,"488") +
 
-    printText(53,570,"580") +
-    printText(53,710,"700") +
-    printText(570,710,"2025/1") +
+    printText(260,574,"574") +
+    printText(260,618,"AAA") +
 
-    printQRCode(631, 125, "www.qvalify.se") +
+    printText(70,574,"574") +
+    
+    //printText(53,710,"710") +
+    
+    printText(640,686,"2025 / 01") +
+
+    printQRCode(594, 96, "http://www.qvalify.se/id=abced24353&ejhfjewhrewr") +
 
     end;
 
