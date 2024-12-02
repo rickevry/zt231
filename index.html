@@ -23,21 +23,27 @@ document.getElementById('print').addEventListener('click', async () => {
         const printQRCode = (x, y, url) => (`^FO${x},${y}^BQN,2,7,M,7^FDQA,${url}^FS`);
         const end = "^XZ";
 
+        let y = 3;
+
         let zpl = 
             start + 
             type + 
             printRate + 
             darkness +
             changeFont + 
-            printText(70,322,"Q2024041") + 
-            printText(260,408,"R03113412") +
-            printText(70,408,"HNE023-12") +
-            printText(70,490,"Norra hallen") +
-            printText(260,576,"3.500 KG") +
-            printText(70,576,"G034") +
-            printText(260,620,"5 Pers") +
-            printText(640,686,"2025 / 01") +
-            printQRCode(606, 115, "http://www.qvalify.se/id=abced24353&ejhfjewhrewr") +
+            printText(70,322+y,"Q2024041") + 
+            //printText(260+30,408+y,"R03113412") +
+            printText(260,408+y,"R03113412") +
+            printText(70,408+y,"HNE02357") +
+            printText(70,490+y,"Norra hallen") +
+            printText(260,576+y,"3.500 KG /") +
+            printText(70,576+y,"G034") +
+            printText(260,620+y,"5 Pers") +
+            printText(640,686+y,"2025 / 01") +
+            printQRCode(606, 115+y, "http://www.qvalify.se/id=abced24353&ejhfjewhrewr") +
+            printText(70,724+y,"Ordinarie") +
+            printText(70,766+y,"besiktningsmanad") +
+
             end;
 
         const response = await fetch('http://10.10.1.229/pstprnt', {
